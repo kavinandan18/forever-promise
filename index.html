@@ -2,261 +2,246 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Chocolate Day 🍫</title>
+<title>Happy Teddy Day 🧸</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box}
 
 body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,#ffdde1,#ee9ca7);
   min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
-  background:linear-gradient(135deg,#3e2723,#5d4037,#8d6e63);
-  font-family:'Segoe UI',sans-serif;
   overflow:hidden;
 }
 
-/* OPEN BUTTON */
-.open-btn{
-  background:#fff;
-  color:#4e342e;
-  padding:16px 38px;
-  border-radius:50px;
-  font-size:20px;
-  border:none;
-  cursor:pointer;
-  box-shadow:0 15px 40px rgba(0,0,0,.4);
-  animation:pulse 1.5s infinite;
+/* 🎵 MUSIC */
+audio{display:none}
+
+/* 🧸 TEDDY RAIN */
+.teddy-rain span{
+  position:fixed;
+  top:-60px;
+  font-size:42px;
+  animation:fall linear infinite;
+  opacity:.9;
+  pointer-events:none;
 }
 
-/* 3D FLIP CONTAINER */
-.scene{
-  display:none;
-  width:92vw;
-  max-width:420px;
-  height:520px;
-  perspective:1200px;
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(360deg);
+    opacity:0;
+  }
 }
 
+/* CARD */
 .card{
+  width:92vw;
+  max-width:380px;
+  height:530px;
+  perspective:1200px;
+  position:relative;
+  z-index:2;
+}
+
+.inner{
   width:100%;
   height:100%;
-  position:relative;
+  position:absolute;
   transform-style:preserve-3d;
-  transition:transform 1.4s ease;
+  transition:transform 1.3s cubic-bezier(.4,.2,.2,1);
 }
 
-.card.flip{
+.card.flip .inner{
   transform:rotateY(180deg);
 }
 
-/* CARD SIDES */
+/* SIDES */
 .side{
   position:absolute;
-  inset:0;
-  border-radius:32px;
+  width:100%;
+  height:100%;
+  border-radius:26px;
   backface-visibility:hidden;
   display:flex;
   flex-direction:column;
-  justify-content:center;
   align-items:center;
-  padding:30px;
+  padding:22px;
   text-align:center;
+  box-shadow:0 30px 80px rgba(0,0,0,.4);
 }
 
-/* FRONT */
 .front{
-  background:linear-gradient(160deg,#fff8f0,#f3e5d8);
-  box-shadow:0 25px 60px rgba(0,0,0,.45);
+  background:linear-gradient(160deg,#fff1f6,#ffe4ec);
+  justify-content:center;
 }
 
-.front h1{
-  font-size:34px;
-  background:linear-gradient(90deg,#4e342e,#a1887f,#4e342e);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.front p{
-  margin-top:14px;
-  font-size:18px;
-  color:#4e342e;
-}
-
-/* BACK */
 .back{
-  background:linear-gradient(160deg,#fff3e0,#efebe9);
+  background:linear-gradient(160deg,#fff0f5,#fce4ec);
   transform:rotateY(180deg);
-  box-shadow:0 25px 60px rgba(0,0,0,.45);
-}
-
-/* TYPING TEXT */
-.typing{
-  font-size:18px;
-  line-height:1.8;
-  color:#4e342e;
-  min-height:90px;
+  justify-content:flex-start;
 }
 
 /* GIF */
 .gif{
-  margin:20px 0;
+  margin-top:12px;
+  transition:transform 0.8s ease;
 }
 
 .gif img{
   width:100%;
-  max-width:230px;
+  max-width:240px;
   border-radius:24px;
-  box-shadow:0 18px 45px rgba(0,0,0,.4);
-  animation:softZoom 6s ease-in-out infinite;
+  box-shadow:0 18px 45px rgba(0,0,0,.35);
+  animation:softZoom 4s ease-in-out infinite;
+}
+
+@keyframes softZoom{
+  50%{transform:scale(1.07)}
+}
+
+/* 🧸 MOVE GIF UP WHEN TYPING */
+.back.typing .gif{
+  transform:translateY(-30px);
+}
+
+/* TEXT */
+.romantic{
+  margin-top:18px;
+  font-size:17px;
+  line-height:1.8;
+  color:#6a1b3a;
+  min-height:120px;
+}
+
+/* BUTTON */
+button{
+  margin-top:20px;
+  padding:14px 30px;
+  border:none;
+  border-radius:30px;
+  font-size:17px;
+  background:linear-gradient(90deg,#ff5f9e,#ff8fab);
+  color:white;
+  cursor:pointer;
+  box-shadow:0 10px 26px rgba(0,0,0,.3);
+  animation:pulse 1.6s infinite;
+}
+
+@keyframes pulse{
+  50%{transform:scale(1.08)}
 }
 
 /* FINAL */
 .final{
-  margin-top:10px;
-  font-size:30px;
+  margin-top:12px;
+  font-size:32px;
   font-weight:900;
-  background:linear-gradient(90deg,#3e2723,#a1887f,#3e2723);
+  background:linear-gradient(90deg,#ff4d6d,#ffb3c6);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
+  opacity:0;
+  transform:scale(.6);
+  transition:1s ease;
 }
-
-/* HAPPY SCREEN */
-.happy{
-  display:none;
-  text-align:center;
-  animation:fadeIn 1.3s ease;
-}
-
-.happy h1{
-  font-size:34px;
-  color:#fff;
-}
-
-.happy p{
-  font-size:18px;
-  color:#f5e9e0;
-  margin-top:8px;
-}
-
-.love{
-  margin-top:22px;
-  font-size:56px;
-  font-weight:900;
-  background:linear-gradient(90deg,#ffccbc,#ffe0b2,#ffccbc);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation:zoom 2s infinite;
-}
-
-/* FALLING */
-.fall{
-  position:fixed;
-  top:-30px;
-  font-size:26px;
-  animation:fall linear infinite;
-  pointer-events:none;
-}
-
-/* ANIMATIONS */
-@keyframes pulse{50%{transform:scale(1.1)}}
-@keyframes fadeIn{from{opacity:0;transform:scale(.9)}to{opacity:1}}
-@keyframes zoom{50%{transform:scale(1.12)}}
-@keyframes softZoom{50%{transform:scale(1.06)}}
-@keyframes fall{to{transform:translateY(110vh);opacity:0}}
 </style>
 </head>
 
 <body>
 
-<button class="open-btn" onclick="openCard()">Tap to Open 🍫</button>
-
+<!-- 🎵 MUSIC -->
 <audio id="music" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
 </audio>
 
-<div class="scene" id="scene">
-  <div class="card" id="card">
+<!-- 🧸 RAIN -->
+<div class="teddy-rain" id="rain"></div>
+
+<!-- CARD -->
+<div class="card" id="card">
+  <div class="inner">
 
     <!-- FRONT -->
     <div class="side front">
-      <h1>For You ❤️</h1>
-      <p>Tap again to open 🍫</p>
+      <h2>🧸 Happy Teddy Day 🧸❤️</h2>
+      <p class="romantic">
+        “Holding you in my arms is the best feeling in the world. On this Teddy Day, I promise to always be your teddy bear!” 🧸💕
+      </p>
+      <button onclick="flipCard()">💌 Open for You</button>
     </div>
 
     <!-- BACK -->
     <div class="side back">
-      <div class="typing" id="typing"></div>
-
       <div class="gif">
-        <img src="https://media0.giphy.com/media/v1.Y2lkPTZjMDliOTUycGxvdWQwbzBuMjgzdzFwNHM3eDA2ZnJwYWg2eW9mNmQzNWcyMDhkYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1ipgTB2guMOEW9TMBT/giphy.gif">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3FoOXYxaDAxcjQ3b2puc2Jndno0NGFrb3RyMXI3ZmE1MTZ4ejVmaCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/zFHu7yuSHm4H5gNZVx/giphy.gif">
       </div>
 
-      <div class="final">Happy Chocolate Day 🍫❤️</div>
+      <p class="romantic" id="typeText"></p>
+      <div class="final" id="finalMsg">I LOVE YOU 🧸❤️</div>
     </div>
 
   </div>
 </div>
 
-<div class="happy" id="happy">
-  <h1>You made me the happiest 💕</h1>
-  <p>Forever starts now…</p>
-  <div class="love">I LOVE YOU</div>
-</div>
-
 <script>
-let opened=false;
+// 🧸 TEDDY RAIN
+const emojis=["🧸","🐻","🤎","❤️","🎀","💖"];
+setInterval(()=>{
+  const s=document.createElement("span");
+  s.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+  s.style.left=Math.random()*100+"vw";
+  s.style.animationDuration=(4+Math.random()*4)+"s";
+  document.getElementById("rain").appendChild(s);
+  setTimeout(()=>s.remove(),9000);
+},160);
 
-function openCard(){
-  document.querySelector('.open-btn').style.display='none';
-  document.getElementById('scene').style.display='block';
-  document.getElementById('music').play();
-  rain();
-
-  if(!opened){
-    opened=true;
-    setTimeout(()=>{
-      document.getElementById('card').classList.add('flip');
-      typeText();
-    },600);
-
-    setTimeout(()=>{
-      document.getElementById('scene').style.display='none';
-      document.getElementById('happy').style.display='block';
-    },12000);
-  }
+// FLIP
+function flipCard(){
+  document.getElementById("card").classList.add("flip");
+  document.getElementById("music").play();
+  setTimeout(typeText,800);
+  setTimeout(showFinal,4200);
 }
 
-/* TYPING EFFECT */
-const text = 
-"Chocolate jaise sweet ho tum 🍫\n" +
-"Tumhare saath har pal aur bhi special lagta hai ❤️\n" +
-"Aaj Chocolate Day par bas itna kehna tha…";
+// TYPING
+const lines = [
+  "Happy Teddy Day, my love… 🧸💖",
+  "You are my warm hug, my cuddly teddy, my comfort ❤️",
+  "Just like this teddy, I promise to stay by your side forever 💕",
+  "You are the softest blessing in my life 🥰"
+];
 
-let i=0;
+
+let l=0,c=0;
+
 function typeText(){
-  const el=document.getElementById("typing");
-  if(i<text.length){
-    el.innerHTML += text.charAt(i)==="\n"?"<br>":text.charAt(i);
-    i++;
-    setTimeout(typeText,55);
+  const el=document.getElementById("typeText");
+
+  // 🧸 MOVE GIF UP
+  document.querySelector(".back").classList.add("typing");
+
+  if(l<lines.length){
+    if(c<lines[l].length){
+      el.innerHTML+=lines[l][c++];
+      setTimeout(typeText,45);
+    }else{
+      el.innerHTML+="<br>";
+      l++; c=0;
+      setTimeout(typeText,350);
+    }
   }
 }
 
-/* FALLING */
-function rain(){
-  const items=["🍫","❤️","🤎"];
-  setInterval(()=>{
-    const r=document.createElement("div");
-    r.className="fall";
-    r.innerHTML=items[Math.floor(Math.random()*items.length)];
-    r.style.left=Math.random()*100+"vw";
-    r.style.animationDuration=(4+Math.random()*3)+"s";
-    document.body.appendChild(r);
-    setTimeout(()=>r.remove(),8000);
-  },260);
+// FINAL
+function showFinal(){
+  const f=document.getElementById("finalMsg");
+  f.style.opacity=1;
+  f.style.transform="scale(1)";
 }
 </script>
 
