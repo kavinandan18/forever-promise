@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Teddy Day 🧸</title>
+<title>Happy Promise Day 💍❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -11,7 +11,7 @@
 body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
-  background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
   min-height:100vh;
   display:flex;
   justify-content:center;
@@ -19,14 +19,13 @@ body{
   overflow:hidden;
 }
 
-/* 🎵 MUSIC */
 audio{display:none}
 
-/* 🧸 TEDDY RAIN */
-.teddy-rain span{
+/* 💍 PROMISE RAIN */
+.promise-rain span{
   position:fixed;
   top:-60px;
-  font-size:42px;
+  font-size:38px;
   animation:fall linear infinite;
   opacity:.9;
   pointer-events:none;
@@ -43,7 +42,7 @@ audio{display:none}
 .card{
   width:92vw;
   max-width:380px;
-  height:530px;
+  height:580px;
   perspective:1200px;
   position:relative;
   z-index:2;
@@ -61,7 +60,6 @@ audio{display:none}
   transform:rotateY(180deg);
 }
 
-/* SIDES */
 .side{
   position:absolute;
   width:100%;
@@ -77,12 +75,12 @@ audio{display:none}
 }
 
 .front{
-  background:linear-gradient(160deg,#fff1f6,#ffe4ec);
+  background:linear-gradient(160deg,#fff0f5,#ffe4ec);
   justify-content:center;
 }
 
 .back{
-  background:linear-gradient(160deg,#fff0f5,#fce4ec);
+  background:linear-gradient(160deg,#fff5f7,#f8bbd0);
   transform:rotateY(180deg);
   justify-content:flex-start;
 }
@@ -105,28 +103,25 @@ audio{display:none}
   50%{transform:scale(1.07)}
 }
 
-/* 🧸 MOVE GIF UP WHEN TYPING */
 .back.typing .gif{
   transform:translateY(-30px);
 }
 
-/* TEXT */
 .romantic{
   margin-top:18px;
   font-size:17px;
   line-height:1.8;
-  color:#6a1b3a;
+  color:#880e4f;
   min-height:120px;
 }
 
-/* BUTTON */
 button{
   margin-top:20px;
   padding:14px 30px;
   border:none;
   border-radius:30px;
   font-size:17px;
-  background:linear-gradient(90deg,#ff5f9e,#ff8fab);
+  background:linear-gradient(90deg,#ff4d6d,#ff758f);
   color:white;
   cursor:pointer;
   box-shadow:0 10px 26px rgba(0,0,0,.3);
@@ -137,12 +132,11 @@ button{
   50%{transform:scale(1.08)}
 }
 
-/* FINAL */
 .final{
   margin-top:12px;
-  font-size:32px;
+  font-size:30px;
   font-weight:900;
-  background:linear-gradient(90deg,#ff4d6d,#ffb3c6);
+  background:linear-gradient(90deg,#ff1744,#ff8fab);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   opacity:0;
@@ -154,43 +148,42 @@ button{
 
 <body>
 
-<!-- 🎵 MUSIC -->
 <audio id="music" loop>
   <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
 </audio>
 
-<!-- 🧸 RAIN -->
-<div class="teddy-rain" id="rain"></div>
+<div class="promise-rain" id="rain"></div>
 
-<!-- CARD -->
 <div class="card" id="card">
   <div class="inner">
 
     <!-- FRONT -->
     <div class="side front">
-      <h2>🧸 Happy Teddy Day 🧸❤️</h2>
+      <h2>💍 Happy Promise Day ❤️</h2>
       <p class="romantic">
-        “Holding you in my arms is the best feeling in the world. On this Teddy Day, I promise to always be your teddy bear!” 🧸💕
+        "Har Pal Ke Rishte Ka Wada Hai Tumse,
+Apnapan Kuch Itna Jyada Hain Tumse,
+Kabhi Na Sochna Ki Bhul Jayenge Tumhe,
+Zindagi Bhar Ka Sath Denge Ye Wada Hai Tumse.... "
       </p>
-      <button onclick="flipCard()">💌 Open for You</button>
+      <button onclick="flipCard()">💌 Open My Promise</button>
     </div>
 
     <!-- BACK -->
     <div class="side back">
       <div class="gif">
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3FoOXYxaDAxcjQ3b2puc2Jndno0NGFrb3RyMXI3ZmE1MTZ4ejVmaCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/zFHu7yuSHm4H5gNZVx/giphy.gif">
+        <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3N2RxbGtsZ2E4ejZhaG5scDhsNjlkc2d3ODhvdWJ5MGhzenhvYWs2NSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/aZcmkpfwkJ1ML8QGUi/giphy.gif">
       </div>
 
       <p class="romantic" id="typeText"></p>
-      <div class="final" id="finalMsg">I LOVE YOU 🧸❤️</div>
+      <div class="final" id="finalMsg">FOREVER WITH YOU 💍❤️</div>
     </div>
 
   </div>
 </div>
 
 <script>
-// 🧸 TEDDY RAIN
-const emojis=["🧸","🐻","🤎","❤️","🎀","💖"];
+const emojis=["💍","❤️","💖","💕","🌹","✨"];
 setInterval(()=>{
   const s=document.createElement("span");
   s.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
@@ -200,50 +193,47 @@ setInterval(()=>{
   setTimeout(()=>s.remove(),9000);
 },160);
 
-// FLIP
 function flipCard(){
   document.getElementById("card").classList.add("flip");
   document.getElementById("music").play();
   setTimeout(typeText,800);
-  setTimeout(showFinal,4200);
+  setTimeout(showFinal,9000);
 }
 
-// TYPING
 const lines = [
-  "Happy Teddy Day, my love… 🧸💖",
-  "You are my warm hug, my cuddly teddy, my comfort ❤️",
-  "Just like this teddy, I promise to stay by your side forever 💕",
-  "You are the softest blessing in my life 🥰"
+  "On this Promise Day, I promise I'll always be there to hold your hand, 🤝❤️",
+  "When sorrows come and miseries land... 💕",
+  "I promise to never leave you alone in this world... 🌍💖",
+  "HAPPY PROMISE DAY, sweetheart! 💕",,
+  ""
 ];
-
 
 let l=0,c=0;
 
 function typeText(){
   const el=document.getElementById("typeText");
-
-  // 🧸 MOVE GIF UP
   document.querySelector(".back").classList.add("typing");
 
   if(l<lines.length){
     if(c<lines[l].length){
       el.innerHTML+=lines[l][c++];
-      setTimeout(typeText,45);
+      setTimeout(typeText,35);
     }else{
       el.innerHTML+="<br>";
       l++; c=0;
-      setTimeout(typeText,350);
+      setTimeout(typeText,400);
     }
   }
 }
 
-// FINAL
 function showFinal(){
   const f=document.getElementById("finalMsg");
+  f.innerHTML="I LOVE YOU FOREVER 💍❤️";
   f.style.opacity=1;
   f.style.transform="scale(1)";
 }
 </script>
+
 
 </body>
 </html>
